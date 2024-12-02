@@ -36,7 +36,7 @@ pipeline {
                 
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name duyduy-php-app -p 8080:80 --network dev duyduy/my-php-app'
+                sh 'docker container run -d --rm --name duyduy-php-app -p 8000:80 --network dev duyduy/my-php-app'
             }
         }
     }
