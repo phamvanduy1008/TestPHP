@@ -10,12 +10,7 @@ pipeline {
         stage('Pull Latest Code from Git') {
             steps {
                 echo 'Pulling latest code from Git repository'
-                sh 'rm -rf *'
-                git 'https://github.com/phamvanduy1008/TestPHP.git'
-                
-                sh 'git checkout main'
-
-                sh 'git pull origin main'
+                git branch: 'main', url: 'https://github.com/phamvanduy1008/TestPHP.git'
             }
         }
         
