@@ -11,8 +11,11 @@ pipeline {
             steps {
                 echo 'Pulling latest code from Git repository'
                 sh 'rm -rf *'
+                git 'https://github.com/phamvanduy1008/TestPHP.git'
                 
-                sh 'git clone https://github.com/phamvanduy1008/TestPHP.git . || git pull'
+                sh 'git checkout main'
+
+                sh 'git pull origin main'
             }
         }
         
