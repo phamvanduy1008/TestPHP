@@ -6,6 +6,14 @@ pipeline {
     }
 
     stages {
+
+        stage('Pull Latest Code from Git') {
+            steps {
+                echo 'Pulling latest code from Git repository'
+                sh 'git clone https://your-repository-url.git . || git pull'
+            }
+        }
+        
         stage('Install Dependencies') {
             steps {
                 sh 'php -v'
