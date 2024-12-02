@@ -26,18 +26,15 @@ pipeline {
             }
         }
 
-          stage('Deploy MySQL to DEV') {
+        stage('Deploy MySQL to DEV') {
             steps {
                 script {
                     echo 'Deploying MySQL to DEV environment'
+
                     sh 'docker pull mysql:8.0'
-                    sh 'docker network create dev || echo "Network already exists"'
-                    sh "docker container stop ${MYSQL_CONTAINER_NAME} || echo '${MYSQL_CONTAINER_NAME} does not exist'"
-                    sh 'docker container prune -f'
-                    sh "docker volume rm ${MYSQL_VOLUME_NAME} || echo 'No volume to remove'"
+
                     sh """
-                        docker run --name ${MYSQL_CONTAINER_NAME} --rm --network dev \
-                        -v ${MYSQL_VOLUME_NAME}:/var/lib/mysql \
+                        docker run --name ${MYSQL_CONTAINER_NAME} --rm --network bridge \
                         -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
                         -e MYSQL_DATABASE=${MYSQL_DATABASE} \
                         -d mysql:8.0
@@ -50,7 +47,7 @@ pipeline {
             }
         }
 
-         stage('Deploy PHP App to DEV') {
+        stage('Deploy PHP App to DEV') {
             steps {
                 echo 'Deploying PHP app to DEV environment'
 
