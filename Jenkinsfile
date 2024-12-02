@@ -10,6 +10,8 @@ pipeline {
         stage('Pull Latest Code from Git') {
             steps {
                 echo 'Pulling latest code from Git repository'
+                sh 'rm -rf *'
+                
                 sh 'git clone https://github.com/phamvanduy1008/TestPHP.git . || git pull'
             }
         }
