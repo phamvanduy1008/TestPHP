@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo 'Deploying PHP app to DEV environment'
 
-                sh 'docker image pull duyduy/my-php-app'
+                sh 'docker image pull phamvanduy108/my-php-app'
 
                 sh 'docker container stop duyduy-php-app || echo "this container does not exist"'
 
