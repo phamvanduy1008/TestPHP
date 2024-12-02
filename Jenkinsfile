@@ -10,7 +10,7 @@ pipeline {
         stage('Pull Latest Code from Git') {
             steps {
                 echo 'Pulling latest code from Git repository'
-                sh 'git clone https://your-repository-url.git . || git pull'
+                sh 'git clone https://github.com/phamvanduy1008/TestPHP.git . || git pull'
             }
         }
         
@@ -30,6 +30,7 @@ pipeline {
                 }
             }
         }
+        
 
 
         stage('Deploy PHP App to DEV') {
@@ -44,7 +45,7 @@ pipeline {
                 
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name duyduy-php-app -p 8000:80 --network dev duyduy/my-php-app'
+                sh 'docker container run -d --rm --name duyduy-php-app -p 8000:80 --network dev -v $(pwd):/var/www/html phamvanduy108/my-php-app'
             }
         }
     }
