@@ -17,8 +17,8 @@ pipeline {
         stage('Packaging/Pushing Image') {
             steps {
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t duyduy/my-php-app .'
-                    sh 'docker push duyduy/my-php-app'
+                    sh 'docker build -t phamvanduy108/my-php-app .'
+                    sh 'docker push phamvanduy108/my-php-app'
                 }
             }
         }
