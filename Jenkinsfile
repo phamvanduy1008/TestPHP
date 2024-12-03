@@ -46,7 +46,7 @@ pipeline {
                 
                 sh 'docker volume rm duyduy-mysql-data || echo "no volume"'
 
-                sh "docker run --name duyduy-mysql --rm --network dev -v duyduy-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=db_example -d mysql:8.0"
+                sh "docker run --name duyduy-mysql --rm --network dev -v duyduy-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=todoapp -d mysql:8.0"
                 sh 'sleep 20'
 
                 sh "docker exec -i duyduy-mysql mysql --user=root --password=${MYSQL_ROOT_LOGIN_PSW} < script.sql"
