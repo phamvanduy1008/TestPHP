@@ -36,6 +36,8 @@ pipeline {
      stage('Deploy MySQL to DEV') {
             steps {
                 echo 'Deploying MySQL to DEV environment'
+                echo "${MYSQL_ROOT_LOGIN_PSW}"
+
                 sh 'docker image pull mysql:8.0'
                 
                 sh 'docker network create dev || echo "this network exists"'
