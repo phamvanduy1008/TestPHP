@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         MYSQL_ROOT_LOGIN = credentials('mysql')
+        MYSQL_ROOT_LOGIN_PSW = 123456
     }
 
     stages {
