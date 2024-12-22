@@ -1,8 +1,0 @@
-{
-    "name": "vendor/package",
-    "description": "A simple PHP project",
-    "require": {
-        "php": "^8.0",
-        "monolog/monolog": "^2.0"
-    }
-}
