@@ -1,17 +1,8 @@
-FROM php:7.4-apache
+# Sử dụng Apache HTTP Server làm web server
+FROM httpd:latest
 
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    git && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd mysqli
+# Sao chép mã nguồn HTML/CSS/JS vào thư mục mặc định của Apache
+COPY ./src/ /usr/local/apache2/htdocs/
 
-RUN a2enmod rewrite
-
-WORKDIR /var/www/html
-
+# Expose cổng 80
 EXPOSE 80
-
-CMD ["apache2-foreground"]
